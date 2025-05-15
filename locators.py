@@ -9,6 +9,7 @@ class AuthLocators:
     NAME_USER = (By.XPATH, "//h3[contains(@class, 'profileText name')]")
     BTN_SIGN_OUT = (By.XPATH, "//button[text()='Выйти']")
     BTN_PROFILE = (By.XPATH, "//button[contains(@class, 'circleSmall')]")
+    EXPLICIT_MESSAGE = (By.XPATH, "//*[contains(text(), 'Пароли не совпадают')]")
 
 class SignupLocators:
     BTN_NO_ACCOUNT = (By.XPATH, "//button[contains(text(), 'Нет аккаунта')]")

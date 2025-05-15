@@ -8,22 +8,9 @@ from conftest import *
 
 class TestCreateAd:
 
-    def test_authorized_user_can_create_ad(self, driver):
-        driver.get("https://qa-desk.stand.praktikum-services.ru/")
+    def test_authorized_user_can_create_ad(self, driver, registered_user):
+        driver.get(URL)
         wait = WebDriverWait(driver, 10)
-
-        email = make_email()
-        password = make_password()
-
-        wait.until(EC.element_to_be_clickable(AuthLocators.BTN_SIGN_IN)).click()
-        wait.until(EC.element_to_be_clickable(SignupLocators.BTN_NO_ACCOUNT)).click()
-        wait.until(EC.visibility_of_element_located(SignupLocators.INPUT_EMAIL)).send_keys(email)
-        driver.find_element(*SignupLocators.INPUT_PASS).send_keys(password)
-        driver.find_element(*SignupLocators.INPUT_PASS_CONFIRM).send_keys(password)
-        driver.find_element(*SignupLocators.BTN_CREATE_ACCOUNT).click()
-
-        user = wait.until(EC.visibility_of_element_located(AuthLocators.NAME_USER)).text
-        assert user.rstrip('.') == "User"
 
         wait.until(EC.element_to_be_clickable(PostAdLocators.BTN_NEW_AD)).click()
 
